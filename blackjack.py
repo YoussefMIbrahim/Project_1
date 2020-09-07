@@ -18,7 +18,7 @@ def main():
     dealer_hand = []
     deck = [2,3,4,5,6,7,8,9,'K','Q','J','A'] * 4
     # setting the default choice value as hit
-    choice = 'hit'
+    choice = 'h'
 
     dealHand()
     print('\n\n\nWelcome to Blackjack!')
@@ -28,7 +28,9 @@ def main():
         print(f'Dealer\'s hand: {dealer_hand[0]}, ?\n')
         blackjack(player_hand)
 
-        choice = input('Hit or stand? ').lower()
+        choice = input('[h]it or [s]tand? ').lower()
+        while choice != 'h' and choice != 's':
+            choice = input('[h]it or [s]tand? ').lower()
 
         if choice == 'h' or choice == 'hit':
             #calling the hit function for a new card and the blackjack/bust functions to see if player hit either
@@ -45,6 +47,8 @@ def main():
     gameStatus()
 
     again = input('Would you Like to play again?(y/n)')
+    while again.lower != 'y' and again.lower != 'n':
+        again = input('Play again? (y/n)')
     if again.lower() == 'y':
             main()
     else:
@@ -89,6 +93,8 @@ def blackjack (hand):
         print(f'\nYour hand: {hand}')
         print("Blackjack!")
         again = input('Play again? (y/n)')
+        while again.lower() != 'y' and again.lower() != 'n':
+            again = input('Play again? (y/n)')
         if again.lower() == 'y':
             main()
         else:
@@ -101,6 +107,8 @@ def bust(hand):
 
         print('it\'s a bust.')
         again = input('Play again? (y/n)')
+        while again.lower() != 'y' and again.lower() != 'n':
+            again = input('Play again? (y/n)')
         if again.lower() == 'y':
             main()
         else:
